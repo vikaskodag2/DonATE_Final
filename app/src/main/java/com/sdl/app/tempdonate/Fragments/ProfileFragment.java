@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
@@ -177,10 +178,8 @@ public class ProfileFragment extends Fragment {
 
                 if (response.body().get(0).getSuccess()) {
                     Toast.makeText(getActivity(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
                     Toast.makeText(getActivity(), "Profile not found!", Toast.LENGTH_SHORT).show();
-                    return;
                 }
             }
 
@@ -246,14 +245,15 @@ public class ProfileFragment extends Fragment {
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                boolean result= MarshmallowPermissions.checkPermission(getActivity());
+                boolean StorageResult= MarshmallowPermissions.checkStoragePermission(getActivity());
+                boolean CameraResult = MarshmallowPermissions.checkCameraPermission(getActivity());
                 if (items[item].equals("Take Photo")) {
                     userChosenTask="Take Photo";
-                    if(result)
+                    if(CameraResult)
                         cameraIntent();
                 } else if (items[item].equals("Choose from Library")) {
                     userChosenTask="Choose from Library";
-                    if(result)
+                    if(StorageResult)
                         galleryIntent();
                 } else if(items[item].equals("Remove Picture")) {
                     removePicture();
@@ -280,7 +280,7 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case MarshmallowPermissions.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -323,7 +323,9 @@ public class ProfileFragment extends Fragment {
     private void onCaptureImageResult(Intent data) {
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        thumbnail.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+        if (thumbnail != null) {
+            thumbnail.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+        }
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("profpic", encodeTobase64(thumbnail));
         editor.apply();
@@ -331,9 +333,8 @@ public class ProfileFragment extends Fragment {
     }
 
     public static String encodeTobase64(Bitmap image) {
-        Bitmap immage = image;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        image.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] b = baos.toByteArray();
         String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
         return imageEncoded;
@@ -358,7 +359,7 @@ public class ProfileFragment extends Fragment {
     private void removePicture() {
         profileImageView.setImageDrawable(getResources().getDrawable(R.drawable.default_profile_picture));
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if(profpic!=null || profpic!="") {
+        if(profpic!=null || profpic.equalsIgnoreCase("")) {
             editor.putString("profpic", "");
             editor.apply();
         }

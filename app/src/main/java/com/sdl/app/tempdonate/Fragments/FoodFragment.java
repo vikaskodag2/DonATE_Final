@@ -2,7 +2,6 @@ package com.sdl.app.tempdonate.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.ListView;
 import com.sdl.app.tempdonate.R;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 
 public class FoodFragment extends Fragment {
@@ -80,8 +80,7 @@ public class FoodFragment extends Fragment {
                 if(!validate())
                     return;
 
-                noofpeople = Integer.parseInt(number.getText().toString());
-                Log.e("no of people : ", "" + noofpeople);
+                noofpeople = Integer.parseInt(number.getText().toString().trim());
                 Bundle bundle = new Bundle();
                 bundle.putString("noofpeople", String.valueOf(noofpeople));
                 bundle.putStringArrayList("foodList", food_list);
@@ -102,7 +101,7 @@ public class FoodFragment extends Fragment {
     private boolean validate() {
         boolean valid = true;
 
-        noofpeople = Integer.parseInt(number.getText().toString());
+        noofpeople = Integer.parseInt(number.getText().toString().trim());
         if(noofpeople <= 0) {
             number.setError("Number of people cannot be zero");
             number.requestFocus();
@@ -119,8 +118,8 @@ public class FoodFragment extends Fragment {
     private boolean validateFood() {
         boolean valid = true;
 
-        String fooditemcheck = fooditem.getText().toString();
-        if(fooditemcheck.equalsIgnoreCase("") || fooditemcheck.equalsIgnoreCase(" ") || fooditemcheck.length() < 3) {
+        String foodItemCheck = fooditem.getText().toString();
+        if(!Pattern.compile("^[ A-Za-z]+$").matcher(foodItemCheck).matches() || foodItemCheck.length() < 3) {
             fooditem.setError("Not a valid food item");
             fooditem.requestFocus();
             valid = false;

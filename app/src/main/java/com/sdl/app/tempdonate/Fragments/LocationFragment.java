@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -23,8 +25,11 @@ public class LocationFragment extends Fragment {
 
     private static ArrayList<String> food_list;
     private static String countpeople;
+    private String donationLocation;
     private Button location;
     private Bundle secondBundle;
+
+    private TextView locationTV;
 
     public LocationFragment() {
         // Required empty public constructor
@@ -54,6 +59,7 @@ public class LocationFragment extends Fragment {
 
         secondBundle = new Bundle();
         location = (Button) view.findViewById(R.id.location_btn);
+        locationTV = (TextView) view.findViewById(R.id.textView3);
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getActivity().getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
@@ -61,25 +67,26 @@ public class LocationFragment extends Fragment {
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Log.i(TAG, "Place: " + place.getName());
-
-                secondBundle.putString("Location",place.getName().toString());
-
+                donationLocation = place.getName().toString();
+                if(!validate())
+                    return;
             }
 
             @Override
             public void onError(Status status) {
-                // TODO: Handle the error.
                 Log.i(TAG, "An error occurred: " + status);
+                Toast.makeText(getActivity(), "An error occurred: "+status, Toast.LENGTH_SHORT).show();
             }
         });
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!validate())
+                    return;
                 secondBundle.putString("noofpeople", countpeople);
                 secondBundle.putStringArrayList("foodList", food_list);
+                secondBundle.putString("Location", donationLocation);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_home, ReceiverListFragment.newInstance(secondBundle))
@@ -89,5 +96,18 @@ public class LocationFragment extends Fragment {
         });
 
         return view;
+    }
+
+
+    private boolean validate() {
+        boolean valid = true;
+        if(donationLocation == null || donationLocation.isEmpty() || donationLocation.equalsIgnoreCase(" ")) {
+            locationTV.setError("Not a valid location!");
+            location.setEnabled(false);
+            valid = false;
+        }
+        else
+            location.setEnabled(true);
+        return valid;
     }
 }

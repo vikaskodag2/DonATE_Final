@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.sdl.app.tempdonate.Retrofit.APIClient;
 import com.sdl.app.tempdonate.Retrofit.APIService;
 import com.sdl.app.tempdonate.Retrofit.NGOList;
 
+import java.text.ParseException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -65,6 +67,11 @@ public class DonationsFragment extends Fragment {
             @Override
             public void onResponse(Call<List<NGOList>> call, Response<List<NGOList>> response) {
                 List<NGOList> mydon = response.body();
+                try {
+                    Log.d("DonationsFragment:", ""+mydon.get(mydon.size()-1).getDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 adapter = new MydonationsAdapter(mydon);
                 recyclerView.setAdapter(adapter);
             }
@@ -72,7 +79,7 @@ public class DonationsFragment extends Fragment {
             @Override
             public void onFailure(Call<List<NGOList>> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(getContext(), "Error in fetching data!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error in fetching data!", Toast.LENGTH_SHORT).show();
             }
         });
 

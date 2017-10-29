@@ -73,6 +73,10 @@ public class ReceiverAdapter extends RecyclerView.Adapter<ReceiverAdapter.MyView
                 sendinfo.setNumber(ReceiverListFragment.getNoofpeople());
                 sendinfo.setItems(ReceiverListFragment.getFood_list());
 
+                Log.d("ReceiverAdapter:", ""+ReceiverListFragment.getNoofpeople());
+                Log.d("ReceiverAdapter:", ReceiverListFragment.getLoc());
+                Log.d("ReceiverAdapter:", String.valueOf(ReceiverListFragment.getFood_list()));
+
                 Call<List<NGOList>> call = apiInterface.sendDonorInfo(sendinfo, token);
 
                 call.enqueue(new Callback<List<NGOList>>() {

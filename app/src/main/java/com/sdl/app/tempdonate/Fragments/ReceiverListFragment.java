@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,6 @@ public class ReceiverListFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private ReceiverAdapter adapter;
-    private List<NGOList> info;
     private APIService apiInterface;
     List<NGOList> finallist;
 
@@ -91,10 +89,6 @@ public class ReceiverListFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        Log.d("LOCATION_TAG: ", loc);
-        Log.d("PEOPLE_TAG: ", ""+noofpeople);
-        Log.d("FOOD_TAG: ", food_list.get(0).toString());
-
         apiInterface = APIClient.getClient().create(APIService.class);
 
         Call<List<NGOList>> call = apiInterface.getOrgList();
@@ -102,7 +96,6 @@ public class ReceiverListFragment extends Fragment {
         call.enqueue(new Callback<List<NGOList>>() {
             @Override
             public void onResponse(Call<List<NGOList>> call, Response<List<NGOList>> response) {
-                Log.e("imp", "onResponse: ");
                 finallist = response.body();
                 Context ct = getContext();
                 adapter = new ReceiverAdapter(finallist, ct);
@@ -111,7 +104,6 @@ public class ReceiverListFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<NGOList>> call, Throwable t) {
-                Log.e("oyeoye", "onFailure: ");
                 t.printStackTrace();
                 Toast.makeText(getContext(), "Error in fetching content!", Toast.LENGTH_LONG).show();
             }
