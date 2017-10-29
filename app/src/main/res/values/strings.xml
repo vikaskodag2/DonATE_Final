@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">DonATE</string>
+    <string name="app_contact">noReplyDonateApp@gmail.com</string>
+    <string name="app_login">Login Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_logout">Logout</string>
+
+    <!-- Login and SignUp -->
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="frgt_pwd">Forgot Password?</string>
+    <string name="signup_tf">No account yet? Create one</string>
+    <string name="login_btn">Login</string>
+    <string name="regstr_name">Name</string>
+    <string name="regstr_email">Email</string>
+    <string name="regstr_pwd">Password</string>
+    <string name="regstr_rpwd">Re-enter Password</string>
+    <string name="rgstr_mob">Mobile Number (10 digits)</string>
+    <string name="rgstr_city">City</string>
+    <string name="regstr_btn">CREATE ACCOUNT</string>
+    <string name="login_lnk">Already a member? Login</string>
+
+    <!-- Home Fragment -->
+    <string name="donate_btn">Donate</string>
+    <string name="viewpager_image">Images in viewpager</string>
+
+    <!--Profile Fragment -->
+    <string name="profile_picture">Profile Picture</string>
+    <string name="edit_btn">Edit Profile contents</string>
+    <string name="city_txt">City</string>
+    <string name="email_txt">Email</string>
+    <string name="name_txt">Name</string>
+    <string name="phone_txt">Phone</string>
+    <string name="save_btn">SAVE</string>
+
+    <!-- Food Fragment -->
+    <string name="peoplefeed">No of people you can feed : </string>
+    <string name="location_btn">Confirm Location</string>
+    <string name="org_donate">Organizations you can donate to :</string>
+    <string name="ngo_example">Fellowship of physically handicaped</string>
+    <string name="donated">Donated :</string>
+    <string name="food">Food</string>
+    <string name="count">Count :</string>
+    <string name="to">To :</string>
+    <string name="date">Date :</string>
+
+    <!-- Location Fragment -->
+    <string name="pickup_location">Food pick up location : </string>
+
+    <!-- Forgot Fragment -->
+    <string name="forgot_btn">Generate OTP</string>
+    <string name="forgot_email">Email</string>
+    <string name="otp_btn">Confirm</string>
+
+    <!-- OTP Dialog -->
+    <string name="forgot_otp">Enter OTP</string>
+    <string name="reset_pwd">Password</string>
+    <string name="reset_btn">Reset Password</string>
+
+    <!-- Money Donate fragment -->
+    <string name="your_name">Your Name</string>
+    <string name="mail_id">Your Email-Id</string>
+    <string name="mobile_number">Your Mobile Number</string>
+    <string name="amount">Enter Amount</string>
+    <string name="description">Description</string>
+    <string name="pay">Pay</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_money_fragment">Hello money fragment</string>
+</resources>

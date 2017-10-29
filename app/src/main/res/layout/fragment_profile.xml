@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sdl.app.tempdonate.Fragments.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="275dp"
+                android:orientation="vertical"
+                android:background="@drawable/profie_background_image">
+
+                <ProgressBar
+                    android:id="@+id/profile_progressbar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:layout_gravity="top" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="@string/profile_picture"/>
+                <EditText
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:textColor="#fff"
+                    android:textSize="50sp"
+                    android:textStyle="italic"
+                    android:inputType="textPersonName"
+                    android:hint="@string/name_txt"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/email_txt"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/profile_email"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:enabled="false"
+                    android:textSize="17sp"
+                    android:layout_weight="3"
+                    android:inputType="textEmailAddress"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/phone_txt"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/profile_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:layout_marginTop="15dp"
+                    android:gravity="bottom"
+                    android:textSize="17sp"
+                    android:layout_weight="3"
+                    android:inputType="phone"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/city_txt"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/profile_city"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:enabled="false"
+                    android:layout_marginTop="15dp"
+                    android:gravity="bottom"
+                    android:textSize="17sp"
+                    android:layout_weight="3"
+                    android:inputType="text"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/profile_savebtn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        android:background="@color/colorPrimary"
+        android:text="@string/save_btn"
+        android:layout_alignBottom="@+id/profile_editbtn"
+        android:layout_centerHorizontal="true" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/profile_editbtn"
+        android:layout_width="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_action_name"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/edit_btn" />
+
+</RelativeLayout>

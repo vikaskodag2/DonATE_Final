@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_menu_profile"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_menu_food"
+            android:title="Donate Food" />
+        <item
+            android:id="@+id/nav_money"
+            android:icon="@drawable/ic_menu_money"
+            android:title="Donate Money" />
+        <item
+            android:id="@+id/nav_donations"
+            android:icon="@drawable/ic_menu_donations"
+            android:title="My Donations" />
+    </group>
+</menu>
