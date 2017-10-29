@@ -17,7 +17,7 @@ import static com.sdl.app.tempdonate.R.id.image_in_Viewpager;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
-    private int[] images = {R.drawable.carousel_pic_one, R.drawable.carousel_pic_two, R.drawable.carousel_pic_three, R.drawable.carousel_pic_four};
+    private int[] images = {R.drawable.carousel_pic_two, R.drawable.carousel_pic_three, R.drawable.carousel_pic_four};
     private LayoutInflater layoutInflater;
     private Context context;
 
