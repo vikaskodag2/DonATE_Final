@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class ReceiverListFragment extends Fragment {
             noofpeople = Integer.parseInt(bundle.getString("noofpeople"));
             loc = bundle.getString("Location");
             food_list = bundle.getStringArrayList("foodList");
+            Log.d("ReceiverListFragment:", String.valueOf(food_list));
         }
         ReceiverListFragment fragment = new ReceiverListFragment();
         return fragment;

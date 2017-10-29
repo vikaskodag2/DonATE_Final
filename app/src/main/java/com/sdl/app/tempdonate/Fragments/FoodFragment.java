@@ -2,14 +2,18 @@ package com.sdl.app.tempdonate.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.sdl.app.tempdonate.Adapter.AutoCompleteAdapter;
 import com.sdl.app.tempdonate.R;
 
 import java.util.ArrayList;
@@ -18,7 +22,8 @@ import java.util.regex.Pattern;
 
 public class FoodFragment extends Fragment {
 
-    private EditText fooditem, number;
+    private EditText number;
+    private AutoCompleteTextView fooditem;
     private ArrayList<String> food_list;
     private ArrayAdapter<String> adapter;
     private ListView listView;
@@ -47,7 +52,7 @@ public class FoodFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_food, container, false);
 
         number = (EditText) view.findViewById(R.id.no_people_feed);
-        fooditem = (EditText) view.findViewById(R.id.fooditem_user);
+        fooditem = (AutoCompleteTextView) view.findViewById(R.id.foodautocompletetextview);
         add = (Button) view.findViewById(R.id.add_food_in_list);
         location = (Button) view.findViewById(R.id.button_add_location);
         listView = (ListView) view.findViewById(R.id.donate_fooditem_list);
@@ -56,6 +61,31 @@ public class FoodFragment extends Fragment {
         listView.setAdapter(adapter);
         final ArrayList<String> listfood = new ArrayList<>();
         number.requestFocus();
+
+        fooditem.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(fooditem.isPerformingCompletion()) {
+                    return;
+                }
+                if(charSequence.length() < 2) {
+                    return;
+                }
+
+                AutoCompleteAdapter adapter = new AutoCompleteAdapter(getContext(), android.R.layout.simple_list_item_1);
+                fooditem.setAdapter(adapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

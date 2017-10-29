@@ -17,8 +17,6 @@ import retrofit2.http.Path;
 
 public interface APIService {
 
-    //TODO: GET CORRECT IP AND LINKS FROM SUSHRUT!!!
-
     // sending user registration details
     @Headers("Content-Type: application/json")
     @POST("users/register")

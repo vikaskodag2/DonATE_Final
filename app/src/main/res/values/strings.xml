@@ -38,7 +38,7 @@
 
     <!-- Food Fragment -->
     <string name="peoplefeed">No of people you can feed : </string>
-    <string name="fooditems">Enter food items here</string>
+    <string name="fooditems">Enter food items here...</string>
     <string name="location_btn">Confirm Location</string>
     <string name="org_donate">Organizations you can donate to :</string>
     <string name="ngo_example">Fellowship of physically handicaped</string>

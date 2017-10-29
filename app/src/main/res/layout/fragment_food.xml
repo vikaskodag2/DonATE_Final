@@ -43,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <EditText
-            android:id="@+id/fooditem_user"
+        <AutoCompleteTextView
+            android:id="@+id/foodautocompletetextview"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -52,6 +52,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:inputType="text"
             android:hint="@string/fooditems"/>
 
         <Button
