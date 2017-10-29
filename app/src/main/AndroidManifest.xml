@@ -20,9 +20,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD9HzEAGGX-tKfapNRVZ8VZvXvzSncpaEw" />
 
         <activity
             android:name=".Activities.HomeActivity"
@@ -43,6 +40,9 @@
             android:name=".Activities.MoneyDonate"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
     </application>
 
 </manifest>

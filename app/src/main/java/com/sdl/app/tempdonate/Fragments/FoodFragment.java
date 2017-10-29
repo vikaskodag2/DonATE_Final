@@ -55,13 +55,15 @@ public class FoodFragment extends Fragment {
         adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.fooditem_listview, R.id.txtview_for_foodlist, food_list);
         listView.setAdapter(adapter);
         final ArrayList<String> listfood = new ArrayList<>();
-
-        noofpeople = Integer.parseInt(number.getText().toString());
-        Log.e("no of people : ", "" + noofpeople);
+        number.requestFocus();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(!validateFood())
+                    return;
+
                 cnt++;
                 String item = " " + cnt + ". " + fooditem.getText().toString();
                 listfood.add(fooditem.getText().toString());
@@ -75,6 +77,11 @@ public class FoodFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                if(!validate())
+                    return;
+
+                noofpeople = Integer.parseInt(number.getText().toString());
+                Log.e("no of people : ", "" + noofpeople);
                 Bundle bundle = new Bundle();
                 bundle.putString("noofpeople", String.valueOf(noofpeople));
                 bundle.putStringArrayList("foodList", food_list);
@@ -90,5 +97,34 @@ public class FoodFragment extends Fragment {
 
 
         return view;
+    }
+
+    private boolean validate() {
+        boolean valid = true;
+
+        noofpeople = Integer.parseInt(number.getText().toString());
+        if(noofpeople <= 0) {
+            number.setError("Number of people cannot be zero");
+            number.requestFocus();
+            valid = false;
+        }
+        if(food_list.isEmpty()) {
+            fooditem.setError("You have not entered any food item!");
+            fooditem.requestFocus();
+            valid = false;
+        }
+        return valid;
+    }
+
+    private boolean validateFood() {
+        boolean valid = true;
+
+        String fooditemcheck = fooditem.getText().toString();
+        if(fooditemcheck.equalsIgnoreCase("") || fooditemcheck.equalsIgnoreCase(" ") || fooditemcheck.length() < 3) {
+            fooditem.setError("Not a valid food item");
+            fooditem.requestFocus();
+            valid = false;
+        }
+        return valid;
     }
 }

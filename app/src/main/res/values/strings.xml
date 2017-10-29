@@ -38,6 +38,7 @@
 
     <!-- Food Fragment -->
     <string name="peoplefeed">No of people you can feed : </string>
+    <string name="fooditems">Enter food items here</string>
     <string name="location_btn">Confirm Location</string>
     <string name="org_donate">Organizations you can donate to :</string>
     <string name="ngo_example">Fellowship of physically handicaped</string>
@@ -46,6 +47,9 @@
     <string name="count">Count :</string>
     <string name="to">To :</string>
     <string name="date">Date :</string>
+    <string name="zero">0</string>
+    <string name="add">Add</string>
+    <string name="add_location">Add Location</string>
 
     <!-- Location Fragment -->
     <string name="pickup_location">Food pick up location : </string>
@@ -67,7 +71,4 @@
     <string name="amount">Enter Amount</string>
     <string name="description">Description</string>
     <string name="pay">Pay</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_money_fragment">Hello money fragment</string>
 </resources>

@@ -66,12 +66,12 @@ public class ReceiverListFragment extends Fragment {
     }
 
     public static ReceiverListFragment newInstance(Bundle bundle) {
-        ReceiverListFragment fragment = new ReceiverListFragment();
         if(bundle.getString("noofpeople") != null && bundle.getString("Location") != null && bundle.getStringArrayList("foodList") != null) {
             noofpeople = Integer.parseInt(bundle.getString("noofpeople"));
             loc = bundle.getString("Location");
             food_list = bundle.getStringArrayList("foodList");
         }
+        ReceiverListFragment fragment = new ReceiverListFragment();
         return fragment;
     }
 
@@ -91,6 +91,10 @@ public class ReceiverListFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+        Log.d("LOCATION_TAG: ", loc);
+        Log.d("PEOPLE_TAG: ", ""+noofpeople);
+        Log.d("FOOD_TAG: ", food_list.get(0).toString());
+
         apiInterface = APIClient.getClient().create(APIService.class);
 
         Call<List<NGOList>> call = apiInterface.getOrgList();
@@ -109,7 +113,7 @@ public class ReceiverListFragment extends Fragment {
             public void onFailure(Call<List<NGOList>> call, Throwable t) {
                 Log.e("oyeoye", "onFailure: ");
                 t.printStackTrace();
-                Toast.makeText(getContext(), "Error in fetching content!", Toast.LENGTH_LONG);
+                Toast.makeText(getContext(), "Error in fetching content!", Toast.LENGTH_LONG).show();
             }
         });
 

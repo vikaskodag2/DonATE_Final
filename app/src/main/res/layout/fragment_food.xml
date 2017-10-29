@@ -33,7 +33,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="0"/>
+            android:text="@string/zero"/>
 
     </LinearLayout>
 
@@ -51,13 +51,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:hint="@string/fooditems"/>
 
         <Button
             android:id="@+id/add_food_in_list"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Add"
+            android:text="@string/add"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
@@ -92,7 +93,7 @@
             android:layout_marginEnd="136dp"
             android:layout_marginRight="136dp"
             android:background="@drawable/round_corners_button"
-            android:text="Add Location" />
+            android:text="@string/add_location" />
 
     </RelativeLayout>
 

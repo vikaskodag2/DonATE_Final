@@ -64,7 +64,7 @@ public class LocationFragment extends Fragment {
                 // TODO: Get info about the selected place.
                 Log.i(TAG, "Place: " + place.getName());
 
-                secondBundle.putString("Location","Pune");
+                secondBundle.putString("Location",place.getName().toString());
 
             }
 
