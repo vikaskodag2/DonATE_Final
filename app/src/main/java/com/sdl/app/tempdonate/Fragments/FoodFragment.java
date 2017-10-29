@@ -149,7 +149,7 @@ public class FoodFragment extends Fragment {
         boolean valid = true;
 
         String foodItemCheck = fooditem.getText().toString();
-        if(!Pattern.compile("^[ A-Za-z]+$").matcher(foodItemCheck).matches() || foodItemCheck.length() < 3) {
+        if(!Pattern.compile("[A-za-z]{2}[ A-Za-z]*$").matcher(foodItemCheck).matches()) {
             fooditem.setError("Not a valid food item");
             fooditem.requestFocus();
             valid = false;

@@ -58,8 +58,6 @@ public class ReceiverAdapter extends RecyclerView.Adapter<ReceiverAdapter.MyView
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int count = ReceiverListFragment.getNoofpeople();
-                Toast.makeText(context, "index : " + position, Toast.LENGTH_LONG).show();
 
                 sharedPreferences = context.getSharedPreferences("LOGIN_PREF", Context.MODE_PRIVATE);
                 String token = sharedPreferences.getString("token", "");
