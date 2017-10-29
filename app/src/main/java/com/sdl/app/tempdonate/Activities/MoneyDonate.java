@@ -84,7 +84,6 @@ public class MoneyDonate extends AppCompatActivity {
                     nongovlist.add(receiverlist.get(i).getName());
                 }
                 setSpinner();
-                showToast("u got the response!!");
             }
 
             @Override
