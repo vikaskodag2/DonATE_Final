@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -27,8 +26,8 @@ public class AutoCompleteAdapter extends ArrayAdapter<String> implements Filtera
 
     private ArrayList<String> data;
     private final String server = "https://trackapi.nutritionix.com/v2/search/instant?query=";
-    private final String apiID = "86a01a1b";
-    private final String apiKey = "13069e9d543a801cf67638d9355b1c2c";
+    private final String apiID = "YOUR_API_ID";
+    private final String apiKey = "YOUR_API_KEY";
 
     public AutoCompleteAdapter(@NonNull Context context, @LayoutRes int resource) {
         super (context, resource);
